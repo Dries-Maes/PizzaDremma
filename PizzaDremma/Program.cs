@@ -17,8 +17,8 @@ namespace PizzaDremma
 
             methode.PrintBanner();
             methode.PlayTetris();
-            
-          
+
+            LogWriter.WriteLog(Console.ReadLine());
             Console.ReadLine();
             
         }
