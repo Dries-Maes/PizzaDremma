@@ -6,6 +6,9 @@ namespace PizzaDremma
 {
     class Methods
     {
+        double budget = 20.0;
+        double total;
+        
         public void Smile()
         {
             ConsoleHelper.SetCurrentFont("Consolas", 10);
@@ -72,9 +75,19 @@ namespace PizzaDremma
             ";
             Console.WriteLine(banner);
         }
-        public void Payment(int var1, int var2)
+        public void Payment()
         {
-            Console.Beep(var1, var2);
+            if(budget >= total)
+            {
+                budget += budget - total;
+                Console.Beep(500, 500); Console.Beep(500, 500);
+                Console.WriteLine("Tranaction passed! Enjoy your fresh hot pizza!");
+            }
+            else
+            {
+                Console.WriteLine("You're too poor for this pizza, try somewhere else!");
+            }
+            
         }
         public void PlayTetris()
         {

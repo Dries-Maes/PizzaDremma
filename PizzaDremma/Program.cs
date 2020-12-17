@@ -16,7 +16,10 @@ namespace PizzaDremma
             Console.OutputEncoding = Encoding.UTF8;
 
             methode.PrintBanner();
+            //PizzariaMenu();
+
             methode.PlayTetris();
+            methode.Payment();
 
             LogWriter.WriteLog(Console.ReadLine());
             Console.ReadLine();
