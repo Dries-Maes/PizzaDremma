@@ -11,6 +11,20 @@ namespace PizzaDremma
             ConsoleHelper.SetCurrentFont("Consolas", 10);
             Console.WriteLine(" ►  Dit item is geselecteerd.\n    Dit item niet. ");
         }
+        public void LogPizza()
+        {
+            string pizza = "1, Funghi, 9.00, [Tomaat, Mozzarella, Salami, Champignons, Zure room]";
+            string[] pizzaElements = pizza.Split(',');
+
+            int id = Convert.ToInt32(pizzaElements[0]);
+            string name = pizzaElements[1];
+            double price = Convert.ToDouble(pizzaElements[2]);
+
+            int index = pizza.IndexOf('[');
+
+            string ingredients = pizza.Substring(index + 1);
+            string[] ingredientsArray = ingredients.Split(',');
+        }
         public void CreatePizza()
         {
             throw new NotImplementedException();
