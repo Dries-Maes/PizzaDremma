@@ -14,9 +14,13 @@ namespace PizzaDremma
         {
             Methods methode = new Methods();
             Console.OutputEncoding = Encoding.UTF8;
-
             methode.PrintBanner();
-            //PizzariaMenu();
+            Console.ReadLine();
+            bool showMenu = true;
+            while (showMenu)
+            {
+                showMenu = methode.PizzariaMenu();
+            }
 
             methode.PlayTetris();
             methode.Payment();
