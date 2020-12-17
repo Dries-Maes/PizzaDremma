@@ -14,7 +14,7 @@ namespace PizzaDremma
             DirectoryInfo logDirInfo = null;
             FileInfo logFileInfo;
 
-            string logFilePath = "C:/Users/emmad/source/repo/pizzaria/";
+            string logFilePath = "C:/Users/emmad/source/repos/pizzaria/";
             logFilePath = logFilePath + "Log-" + System.DateTime.Today.ToString("MM-dd-yyyy") + "." + "txt";
             logFileInfo = new FileInfo(logFilePath);
             logDirInfo = new DirectoryInfo(logFileInfo.DirectoryName);
