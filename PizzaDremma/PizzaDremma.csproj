@@ -6,6 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Toppings.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ChoiceMenu" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Text.Encoding.Extensions" Version="4.3.0" />
   </ItemGroup>
 

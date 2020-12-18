@@ -1,32 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using PizzaDremma.enums;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace PizzaDremma
 {
-    class Pizza
+    [Serializable()]
+    public class Pizza : ISerializable
     {
+        public NameOptions Name { get; set; }
+        public SizeOptions Size {get; set; }
+        public CrustOptions Crust { get; set; }
+        public double Price { get; set; }
+        public object[] Cheesies { get; set; }
+        public object[] Meaties { get; set; }
+        public object[] Veggies { get; set; }
+        public bool Vegetarian { get; set; }
 
-        public string Name { get; set; }//Pepperoni, Chicken Heaven, Veggie Galore,...
-        public double Price { get; set; }//€12,00 ofzo
-        public bool Vegetarisch { get; set; }//ja/nee
-        public string Size { get; set; }//regular, medium, large
-        public string Crust { get; set; }//pan, deep, cheese
+        private static int UID = 1;
+        public int ID { get; set; }
 
-        public string Cheesies1 { get; set; }//mozzarella
-        public string Cheesies2 { get; set; }//emmentaler
-        public string Cheesies3 { get; set; }//gorgonzola
-        public string Cheesies4 { get; set; }//parmezaan
+        public Pizza()
+        {
+            Cheesies = new object[4] { CheesiesOptions.NoCheese, CheesiesOptions.NoCheese, CheesiesOptions.NoCheese, CheesiesOptions.NoCheese };
+            Meaties = new object[4] { MeatiesOptions.NoMeat, MeatiesOptions.NoMeat, MeatiesOptions.NoMeat, MeatiesOptions.NoMeat };
+            Veggies = new object[4]  { VeggieOptions.NoVegetables, VeggieOptions.NoVegetables, VeggieOptions.NoVegetables, VeggieOptions.NoVegetables };
+            Name = NameOptions.Unknown;
+            Size = SizeOptions.Small;
+            Crust = CrustOptions.Classic;
+            Price = 8.0;
+            ID = UID++;
+            Vegetarian = false;
+        }
 
-        public string Veggies1 { get; set; }//paprika
-        public string Veggies2 { get; set; }//olijven
-        public string Veggies3 { get; set; }//champignons
-        public string Veggies4 { get; set; }//artichok
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            
+        }
 
-        public string Meaties1 { get; set; }//gehakt
-        public string Meaties2 { get; set; }//salami
-        public string Meaties3 { get; set; }//kip
-
-        //ffkes een plasje gaan doen :D
     }
 }

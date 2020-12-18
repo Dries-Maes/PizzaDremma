@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
+
 namespace PizzaDremma
 {
     class Methods
     {
+        
         double budget = 20.0;
         double total = 10.0;
-        Toppings keuze = new Toppings();
+        ChoiceMenu choice = new ChoiceMenu();
         
         public void Smile()
         {
             ConsoleHelper.SetCurrentFont("Consolas", 10);
             Console.WriteLine(" ►  Dit item is geselecteerd.\n    Dit item niet. ");
-        }
+        
+    }
         
         public void CreatePizza()
         {
@@ -77,6 +80,25 @@ namespace PizzaDremma
             ";
             Console.WriteLine(banner);
         }
+        
+       /* public void ReviewOrder()
+        {
+            Console.WriteLine("Your order: ");
+            foreach (var item in keuze.Cart)
+            {
+                Console.WriteLine($"\b{item.ID}: {item.Name} - {item.Price}\nCrust:{item.Crust} Size:{item.Size}\nCheese:{item.Cheesies[0]}, {item.Cheesies[1]}, {item.Cheesies[2]}, {item.Cheesies[3]}\nMeat: {item.Meaties[0]}, {item.Meaties[1]}, {item.Meaties[2]}, {item.Meaties[3]}\nVeggies: {item.Veggies[0]}, {item.Veggies[1]}, {item.Veggies[2]}, {item.Veggies[3]}");
+                Console.ReadLine();
+            }
+            //lukt het? :-) run maar hoor ik laat het weten nog lleeg nu komt hij er niet in, misschien readline nodig
+
+
+            Console.WriteLine("Select the item number that you want to remove:");
+            int remove = Convert.ToInt32(Console.ReadLine());
+           
+            keuze.Cart.Remove(keuze.Cart[remove]);
+
+        }
+        */
         public void Payment()
         {
             if(budget >= total)
@@ -92,29 +114,41 @@ namespace PizzaDremma
             }
             
         }
+        
+
         public bool PizzariaMenu()
         {
+
+            KeuzePizza keuze = new KeuzePizza();
             Console.Clear();
             Console.WriteLine("Choose an option:");
-            Console.WriteLine("1) Choose a pizza");
-            Console.WriteLine("2) Make your own pizza");
-            Console.WriteLine("3) Pay your order");
-            Console.WriteLine("4) Exit");
+            Console.WriteLine("1) Choose a pizza");//standaard pizza's
+            Console.WriteLine("2) Make your own pizza");//build a pizza from scratch
+            Console.WriteLine("3) Review your order");//what did I order
+            Console.WriteLine("4) Pay your order");//pay if I can
+            Console.WriteLine("5) Exit");
             Console.Write("\r\nSelect an option: ");
 
             switch (Convert.ToChar(Console.ReadLine()))
             {
                 case '1':
-                    keuze.PizzaChoice();
+                    //PizzaVeggie();
+                                       
+                     choice.PizzaChoice();
+                    
                     return true;
                 case '2':
                     CreatePizza();
                     return true;
                 case '3':
+                    keuze.ReviewOrder2();//weg? ja, maar VS heeft moeite met bijbenen
+                    return true;
+                case '4':
                     PlayTetris();
                     Payment();
                     return true;
-                case '4':
+                case '5':
+
                     return false;
                 default:
                     return true;

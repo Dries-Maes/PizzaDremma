@@ -5,6 +5,9 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Threading;
+using PizzaDremma.enums;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace PizzaDremma
 {
@@ -12,21 +15,31 @@ namespace PizzaDremma
     {
         static void Main(string[] args)
         {
+           
             Methods methode = new Methods();
+            /*
             Console.OutputEncoding = Encoding.UTF8;
-            methode.PrintBanner();
+               methode.PrintBanner();
+               Console.ReadLine();
+             methode.PlayTetris();
+               methode.Payment();
+            LogWriter.WriteLog(Console.ReadLine());
             Console.ReadLine();
+              */
+           // Pizza veggie = new Pizza("regular","cheezy");
+               
+                
+        methode.PrintBanner();
+            Console.ReadLine();
+            
             bool showMenu = true;
             while (showMenu)
             {
                 showMenu = methode.PizzariaMenu();
             }
 
-            methode.PlayTetris();
-            methode.Payment();
-
-            LogWriter.WriteLog(Console.ReadLine());
-            Console.ReadLine();
+            Console.WriteLine("hello world");
+            
             
         }
     }
