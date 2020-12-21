@@ -15,7 +15,7 @@
         Classic = 4
     }
 
-    public enum CheesiesOptions
+    public enum Cheese
     {
         NoCheese = 0,
         Mozarella = 1,
@@ -27,7 +27,7 @@
         VeganCheese = 7
     }
 
-    public enum VeggieOptions
+    public enum Vegg
     {
         NoVegetables = 0,
         Artichokes = 1,
@@ -49,7 +49,7 @@
         FriedOnions = 17
     }
 
-    public enum MeatiesOptions
+    public enum Meat
     {
         NoMeat = 0,
         GrilledChicken = 1,

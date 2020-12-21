@@ -20,7 +20,7 @@ namespace PizzaDremma
             Console.WriteLine("6) Hawaii");
             Console.WriteLine("7) Meatballs Supreme");
             Console.WriteLine("8) QuattroFromaggi");
-            Console.WriteLine("9) Never mind, go back. I want to choose my toppings!");
+            Console.WriteLine("9) I want to choose my own toppings!");
             Console.Write("\r\nSelect an option: ");
 
             switch (Convert.ToChar(Console.ReadLine()))
@@ -50,8 +50,9 @@ namespace PizzaDremma
                     pizzaMaker.PizzaQuattroFromaggi();
                     return true;
                 case '9':
-                    return false;
-                default:
+                    pizzaMaker.PizzaCustomMade();
+                    return true;
+                                    default:
                     return true;
                 }
             

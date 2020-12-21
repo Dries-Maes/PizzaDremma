@@ -8,7 +8,13 @@ using System.Threading;
 using PizzaDremma.enums;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-
+public static class EnumUtil
+{
+    public static IEnumerable<T> GetValues<T>()
+    {
+        return Enum.GetValues(typeof(T)).Cast<T>();
+    }
+}
 namespace PizzaDremma
 {
     class Program

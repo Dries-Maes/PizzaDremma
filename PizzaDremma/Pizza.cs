@@ -7,8 +7,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace PizzaDremma
 {
-    [Serializable()]
-    public class Pizza : ISerializable
+    
+    public class Pizza 
     {
         public NameOptions Name { get; set; }
         public SizeOptions Size {get; set; }
@@ -22,23 +22,23 @@ namespace PizzaDremma
         private static int UID = 1;
         public int ID { get; set; }
 
-        public Pizza()
+        public Pizza(NameOptions test = NameOptions.Unknown, double price = 0, bool veggie = false)
         {
-            Cheesies = new object[4] { CheesiesOptions.NoCheese, CheesiesOptions.NoCheese, CheesiesOptions.NoCheese, CheesiesOptions.NoCheese };
-            Meaties = new object[4] { MeatiesOptions.NoMeat, MeatiesOptions.NoMeat, MeatiesOptions.NoMeat, MeatiesOptions.NoMeat };
-            Veggies = new object[4]  { VeggieOptions.NoVegetables, VeggieOptions.NoVegetables, VeggieOptions.NoVegetables, VeggieOptions.NoVegetables };
-            Name = NameOptions.Unknown;
+            Cheesies = new object[4] { Cheese.NoCheese, Cheese.NoCheese, Cheese.NoCheese, Cheese.NoCheese };
+            Meaties = new object[4] { Meat.NoMeat, Meat.NoMeat, Meat.NoMeat, Meat.NoMeat };
+            Veggies = new object[4]  { Vegg.NoVegetables, Vegg.NoVegetables, Vegg.NoVegetables, Vegg.NoVegetables };
+            Name = test;
+            Price = price;
+            Vegetarian = veggie;
+
             Size = SizeOptions.Small;
             Crust = CrustOptions.Classic;
-            Price = 8.0;
-            ID = UID++;
-            Vegetarian = false;
+          
+            ID = UID++ ;
+         
         }
 
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            
-        }
+        
 
     }
 }

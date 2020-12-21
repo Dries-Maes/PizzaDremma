@@ -7,7 +7,7 @@ namespace PizzaDremma
 {
     class LogWriter
     {
-        public static void WriteLog(string strLog)
+        public static void WriteLog(string strLog )
         {
             StreamWriter log;
             FileStream fileStream = null;
