@@ -2,17 +2,17 @@
 {
     public enum SizeOptions
     {
-        Small = 1,
-        Medium = 2,
-        Large = 3
+        small = 1,
+        medium = 2,
+        large = 3
     }
 
     public enum CrustOptions
     {
-        Pan = 1,
-        Deep = 2,
-        Cheese = 3,
-        Classic = 4
+        pan = 1,
+        deep = 2,
+        cheese = 3,
+        classic = 4
     }
 
     public enum Cheese
@@ -64,15 +64,15 @@
     }
     public enum NameOptions
     {
-        Unknown = 0,
-        Custom = 1,
-        Margarita = 2,
-        Veggie = 3,
-        Pepperoni = 4,
+        unknown = 0,
+        custom = 1,
+        margarita = 2,
+        veggie = 3,
+        pepperoni = 4,
         BBQ = 5,
         SurfNTurf = 6,
-        Hawaii = 7,
-        MeatballsSupreme = 8,
+        hawaii = 7,
+        MeatballSupreme = 8,
         QuattroFrommagi = 9
     }
 }

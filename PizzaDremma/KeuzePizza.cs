@@ -10,7 +10,8 @@ namespace PizzaDremma
 
         public void PizzaEnd(Pizza pizza)
         {
-            Console.WriteLine($"You selected a {pizza.Size} {pizza.Name} with a {pizza.Crust} crust.");
+            Console.Clear();
+            Console.WriteLine($"You selected a {pizza.Size} {pizza.Name} pizza with a {pizza.Crust} crust.");
             Cart.Add(pizza);
             LogWriter.WriteLog($"{Convert.ToString(pizza.ID)}, {Convert.ToString(pizza.Name)}, {Convert.ToString(pizza.Price)}, {Convert.ToString(pizza.Vegetarian)}");
             Console.ReadLine();
@@ -42,15 +43,17 @@ namespace PizzaDremma
 
         public void PickSizeCrust(Pizza pizza)
         {
+            Console.Clear();
             Console.WriteLine("Enter the size that you would like: \n1. Small\n2. Medium\n3. Large");
             pizza.Size = (SizeOptions)(Convert.ToInt32(Console.ReadLine()));
+            Console.Clear();
             Console.WriteLine("Enter the crust that you would like: \n1. Pan\n2. Deep\n3. Cheese\n4. Classic");
             pizza.Crust = (CrustOptions)Convert.ToInt32(Console.ReadLine());
         }
 
         public void PizzaVeggie()
         {
-            Pizza pizza = new Pizza(NameOptions.Veggie, 9.95, true);
+            Pizza pizza = new Pizza(NameOptions.veggie, 9.95, true);
             PickSizeCrust(pizza);
             CheeseAdd(pizza, Cheese.Mozarella, Cheese.Gorgonzola);
             VeggAdd(pizza, Vegg.Aubergines, Vegg.Mushrooms, Vegg.RedOnions);
@@ -59,14 +62,14 @@ namespace PizzaDremma
 
         public void PizzaMargarita()
         {
-            Pizza pizza = new Pizza(NameOptions.Margarita, 8.95, true);
+            Pizza pizza = new Pizza(NameOptions.margarita, 8.95, true);
             PickSizeCrust(pizza);
             PizzaEnd(pizza);
         }
 
         public void PizzaPepperoni()
         {
-            Pizza pizza = new Pizza(NameOptions.Pepperoni, 9.95, false);
+            Pizza pizza = new Pizza(NameOptions.pepperoni, 9.95, false);
             PickSizeCrust(pizza);
             CheeseAdd(pizza, Cheese.Mozarella);
             MeatAdd(pizza, Meat.SpicyPepperoni);
@@ -93,7 +96,7 @@ namespace PizzaDremma
 
         public void PizzaHawaii()
         {
-            Pizza pizza = new Pizza(NameOptions.Hawaii, 9.95, false);
+            Pizza pizza = new Pizza(NameOptions.hawaii, 9.95, false);
             PickSizeCrust(pizza);
             CheeseAdd(pizza, Cheese.Emmentaler);
             MeatAdd(pizza, Meat.SmokedHam);
@@ -103,7 +106,7 @@ namespace PizzaDremma
 
         public void PizzaMeatballsSupreme()
         {
-            Pizza pizza = new Pizza(NameOptions.MeatballsSupreme, 10.95, false);
+            Pizza pizza = new Pizza(NameOptions.MeatballSupreme, 10.95, false);
             PickSizeCrust(pizza);
             CheeseAdd(pizza, Cheese.Emmentaler, Cheese.Ricotta);
             MeatAdd(pizza, Meat.ItalianMeatballs, Meat.CrispyBacon);
@@ -121,20 +124,20 @@ namespace PizzaDremma
 
         public void PizzaCustomMade()
         {
-            Pizza pizza = new Pizza(NameOptions.Custom, 11.95, false);
+            Pizza pizza = new Pizza(NameOptions.custom, 11.95, false);
             PickSizeCrust(pizza);
 
             int ID = 0;
             int ID2 = 0;
             do{
                 Console.Clear();
-                Console.WriteLine($"Please select veggie option {ID + 1}:");
+                Console.WriteLine($"Please select veggie option {ID + 1}/4:");
                 foreach (var item in EnumUtil.GetValues<Vegg>())
                 {
                     Console.WriteLine($"{ID2++}: {Convert.ToString(item)}");
                 }
-                pizza.Veggies[ID] = Convert.ToUInt32(Console.ReadLine());
-                ID++;
+                pizza.Veggies[ID] = (Vegg)Convert.ToUInt32(Console.ReadLine());
+                            ID++;
                 ID2 = 0;
             } while (ID < 4);
             ID = 0;
@@ -142,12 +145,12 @@ namespace PizzaDremma
             {
                 
                 Console.Clear();
-                Console.WriteLine($"Please select meat option {ID + 1}:");
+                Console.WriteLine($"Please select meat option {ID + 1}/4:");
                 foreach (var item in EnumUtil.GetValues<Meat>())
                 {
                     Console.WriteLine($"{ID2++}: {Convert.ToString(item)}");
                 }
-                pizza.Meaties[ID] = Convert.ToUInt32(Console.ReadLine());
+                pizza.Meaties[ID] = (Meat)Convert.ToUInt32(Console.ReadLine());
                 ID++;
                 ID2 = 0;
             } while (ID < 4);
@@ -156,12 +159,12 @@ namespace PizzaDremma
             {
                
                 Console.Clear();
-                Console.WriteLine($"Please select cheese option {ID + 1}:");
+                Console.WriteLine($"Please select cheese option {ID + 1}/4:");
                 foreach (var item in EnumUtil.GetValues<Cheese>())
                 {
                     Console.WriteLine($"{ID2++}: {Convert.ToString(item)}");
                 }
-                pizza.Cheesies[ID] = Convert.ToUInt32(Console.ReadLine());
+                pizza.Cheesies[ID] = (Cheese)Convert.ToUInt32(Console.ReadLine());
                 ID++;
                 ID2 = 0;
             } while (ID < 4);
@@ -171,16 +174,39 @@ namespace PizzaDremma
 
         public void ReviewOrder2()
         {
+            Console.Clear();
             Console.WriteLine("Your order: ");
-
-            foreach (var item in Cart)
+                        foreach (var item in Cart)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"--------------------------------------------");
                 Console.ResetColor();
                 Console.WriteLine($"\b{item.ID}: Pizza {item.Name}: {item.Price} euro\nCrust: {item.Crust} Size: {item.Size}\nCheese: {item.Cheesies[0]}, {item.Cheesies[1]}, {item.Cheesies[2]}, {item.Cheesies[3]}\nMeat: {item.Meaties[0]}, {item.Meaties[1]}, {item.Meaties[2]}, {item.Meaties[3]}\nVeggies: {item.Veggies[0]}, {item.Veggies[1]}, {item.Veggies[2]}, {item.Veggies[3]}");
             }
-            Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"--------------------------------------------");
+            Console.ResetColor();
+            Console.WriteLine("Press 'D' to delete an item, any other key to return to the previous page:");
+           
+            if (Console.ReadKey().Key == ConsoleKey.D)
+            {
+                Console.Clear();
+                Console.WriteLine("Enter the item number that you want to remove:");
+                Cart.RemoveAt(Convert.ToInt32(Console.ReadLine())-1);
+                Console.Clear();
+                Console.WriteLine($"The item has been removed:");
+                foreach (var item in Cart)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"--------------------------------------------");
+                    Console.ResetColor();
+                    Console.WriteLine($"\b{item.ID}: Pizza {item.Name}: {item.Price} euro\nCrust: {item.Crust} Size: {item.Size}\nCheese: {item.Cheesies[0]}, {item.Cheesies[1]}, {item.Cheesies[2]}, {item.Cheesies[3]}\nMeat: {item.Meaties[0]}, {item.Meaties[1]}, {item.Meaties[2]}, {item.Meaties[3]}\nVeggies: {item.Veggies[0]}, {item.Veggies[1]}, {item.Veggies[2]}, {item.Veggies[3]}");
+                }
+                Console.ReadLine();
+            }
+           
+           
+
         }
     }
 }

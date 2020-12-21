@@ -12,7 +12,8 @@ namespace PizzaDremma
         double budget = 20.0;
         double total = 10.0;
         ChoiceMenu choice = new ChoiceMenu();
-        
+        KeuzePizza pizzaMaker = new KeuzePizza();
+
         public void Smile()
         {
             ConsoleHelper.SetCurrentFont("Consolas", 10);
@@ -138,7 +139,7 @@ namespace PizzaDremma
                     
                     return true;
                 case '2':
-                    CreatePizza();
+                    pizzaMaker.PizzaCustomMade();
                     return true;
                 case '3':
                     keuze.ReviewOrder2();//weg? ja, maar VS heeft moeite met bijbenen

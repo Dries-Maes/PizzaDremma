@@ -22,7 +22,7 @@ namespace PizzaDremma
         private static int UID = 1;
         public int ID { get; set; }
 
-        public Pizza(NameOptions test = NameOptions.Unknown, double price = 0, bool veggie = false)
+        public Pizza(NameOptions test = NameOptions.unknown, double price = 0, bool veggie = false)
         {
             Cheesies = new object[4] { Cheese.NoCheese, Cheese.NoCheese, Cheese.NoCheese, Cheese.NoCheese };
             Meaties = new object[4] { Meat.NoMeat, Meat.NoMeat, Meat.NoMeat, Meat.NoMeat };
@@ -31,8 +31,8 @@ namespace PizzaDremma
             Price = price;
             Vegetarian = veggie;
 
-            Size = SizeOptions.Small;
-            Crust = CrustOptions.Classic;
+            Size = SizeOptions.small;
+            Crust = CrustOptions.classic;
           
             ID = UID++ ;
          
