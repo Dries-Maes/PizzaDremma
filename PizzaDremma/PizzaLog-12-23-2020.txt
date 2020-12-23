@@ -16,3 +16,21 @@
 1, veggie, 9,95, True
 2, veggie, 9,95, True
 3, hawaii, 9,95, False
+23/12/2020 00:00:00: 1, BBQ, 10.95, False
+23/12/2020 00:00:00: 2, pepperoni, 9.95, False
+23/12/2020 00:00:00: 3, custom, 11.95, False
+23/12/2020 00:00:00: 1, MeatballSupreme, 10.95, False
+23/12/2020 00:00:00: 2, veggie, 9.95, True
+23/12/2020 00:00:00: 3, margarita, 8.95, True
+23/12/2020 00:00:00: 4, custom, 11.95, False
+23/12/2020 00:00:00: 1, veggie, 9.95, True
+23/12/2020 00:00:00: 2, margarita, 8.95, True
+23/12/2020 00:00:00: 3, pepperoni, 9.95, False
+23/12/2020 00:00:00: 4, hawaii, 9.95, False
+23/12/2020 00:00:00: 1, margarita, 8.95, True
+23/12/2020 00:00:00: 2, pepperoni, 9.95, False
+23/12/2020 00:00:00: 3, SurfNTurf, 10.95, False
+23/12/2020 00:00:00: 1, veggie, 9.95, True
+23/12/2020 00:00:00: 1, veggie, 9.95, True
+23/12/2020 00:00:00: 1, margarita, 8.95, True
+23/12/2020 00:00:00: 1, veggie, 9.95, True

@@ -21,6 +21,7 @@ namespace PizzaDremma
 
         private static int UID = 1;
         public int ID { get; set; }
+      
 
         public Pizza(NameOptions test = NameOptions.unknown, double price = 0, bool veggie = false)
         {
@@ -30,15 +31,9 @@ namespace PizzaDremma
             Name = test;
             Price = price;
             Vegetarian = veggie;
-
             Size = SizeOptions.small;
             Crust = CrustOptions.classic;
-          
             ID = UID++ ;
-         
         }
-
-        
-
     }
 }

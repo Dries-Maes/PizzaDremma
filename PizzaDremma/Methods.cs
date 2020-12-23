@@ -9,11 +9,11 @@ namespace PizzaDremma
     class Methods
     {
         
-        double budget = 20.0;
-        double total = 10.0;
+        double budget =0;
+        double total = 0;
         ChoiceMenu choice = new ChoiceMenu();
         KeuzePizza pizzaMaker = new KeuzePizza();
-
+        private Random budgetCard = new Random();
         public void Smile()
         {
             ConsoleHelper.SetCurrentFont("Consolas", 10);
@@ -101,24 +101,47 @@ namespace PizzaDremma
         */
         public void Payment()
         {
-            
-            Console.WriteLine($"The total for you order is {total}euro.\nHow would you like to pay? By card or cash?");
+           
+            total = pizzaMaker.PizzaTotal();
+            Console.WriteLine($"The total for you order is: \nExcl. 21% BTW: €{Math.Round(pizzaMaker.PizzaNoBTW(), 2)}\n21% BTW: €{Math.Round(pizzaMaker.PizzaBTW(), 2)}\nIncl. 21% BTW: €{pizzaMaker.PizzaTotal()}\n\nHow would you like to pay?\n1: cash \n2: card");
             string paymentChoice = Console.ReadLine();
-            Console.WriteLine("Enter the amount you're paying with.");
-            budget = Convert.ToDouble(Console.ReadLine());
 
-
-            if(budget >= total)
+            switch (paymentChoice)
             {
-                budget += budget - total;
-                Console.Beep(5000, 500); Console.Beep(5000, 500); Thread.Sleep(250);
-                Console.WriteLine("Tranaction passed! Enjoy your fresh hot pizza!");
-                Console.ReadLine();
+                case "1":
+                    Console.WriteLine("Enter the amount you're paying with.");
+                    budget = Convert.ToDouble(Console.ReadLine());
+                    if (budget >= total)
+                    {
+                        budget = budget - total;
+                        Console.WriteLine($"Your change is €{Math.Round(budget,2)}! Enjoy your fresh hot pizza!");
+                        Console.ReadLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("You're too poor for this pizza, try somewhere else!");
+                    }
+                    break;
+                case "2":
+                    //budget = budgetCard.Next(10,200);
+                    int test = budgetCard.Next(0,5);
+                    if (test != 4)
+                    {
+                        budget = budget - total;
+                        Console.Beep(5000, 500); Console.Beep(5000, 500); Thread.Sleep(250);
+                        Console.WriteLine("Transaction passed! Enjoy your fresh hot pizza!");
+                        Console.ReadLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("You're too poor for this pizza, try somewhere else!");
+                        Console.ReadLine();
+                    }
+                    break;
+                default:
+                    break;
             }
-            else
-            {
-                Console.WriteLine("You're too poor for this pizza, try somewhere else!");
-            }
+            
             
         }
         
@@ -151,7 +174,7 @@ namespace PizzaDremma
                     keuze.ReviewOrder2();
                     return true;
                 case '4':
-                    PlayTetris();
+                    //PlayTetris();
                     Payment();
                     return true;
                 case '5':

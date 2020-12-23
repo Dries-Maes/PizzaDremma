@@ -21,11 +21,13 @@ namespace PizzaDremma
     {
         static void Main(string[] args)
         {
-           
+            string name = "Mozzarella";
+            int quantity = 5;
             Methods methode = new Methods();
-            /*
+            Ingredient ingredient = new Ingredient(name, quantity);
+            
             Console.OutputEncoding = Encoding.UTF8;
-               methode.PrintBanner();
+              /* methode.PrintBanner();
                Console.ReadLine();
              methode.PlayTetris();
                methode.Payment();
@@ -37,6 +39,7 @@ namespace PizzaDremma
                 
         methode.PrintBanner();
             Console.ReadLine();
+            ingredient.PrintIngredient();
             
             bool showMenu = true;
             while (showMenu)
@@ -44,7 +47,7 @@ namespace PizzaDremma
                 showMenu = methode.PizzariaMenu();
             }
 
-            Console.WriteLine("hello world");
+            
             
             
         }

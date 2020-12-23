@@ -31,19 +31,40 @@ namespace PizzaDremma
             log.WriteLine(strLog);
             log.Close();
          }
-            public void LogPizza()
+            public static void StockLog(string strLog)
         {
-            string pizza = "1, Funghi, 9.00, [Tomaat, Mozzarella, Salami, Champignons, Zure room]";
-            string[] pizzaElements = pizza.Split(',');
+            StreamWriter log;
+            FileStream fileStream = null;
+            DirectoryInfo logDirInfo = null;
+            FileInfo logFileInfo;
 
-            int id = Convert.ToInt32(pizzaElements[0]);
-            string name = pizzaElements[1];
-            double price = Convert.ToDouble(pizzaElements[2]);
-
-            int index = pizza.IndexOf('[');
-
-            string ingredients = pizza.Substring(index + 1);
-            string[] ingredientsArray = ingredients.Split(',');
+            string logFilePath = $"C:/Users/{Environment.UserName}/source/repos/PizzaDremma/PizzaDremma/";
+            logFilePath = logFilePath + "Stock.txt";
+            logFileInfo = new FileInfo(logFilePath);
+            logDirInfo = new DirectoryInfo(logFileInfo.DirectoryName);
+            if (!logDirInfo.Exists) logDirInfo.Create();
+            if (!logFileInfo.Exists)
+            {
+                fileStream = logFileInfo.Create();
+            }
+            else
+            {
+                fileStream = new FileStream(logFilePath, FileMode.Append);
+            }
+            log = new StreamWriter(fileStream);
+            log.WriteLine(strLog);
+            log.Close();
         }
+        //string pizza = "1, Funghi, 9.00, [Tomaat, Mozzarella, Salami, Champignons, Zure room]";
+        //string[] pizzaElements = pizza.Split(',');
+
+        //int id = Convert.ToInt32(pizzaElements[0]);
+        //string name = pizzaElements[1];
+        //double price = Convert.ToDouble(pizzaElements[2]);  
+
+        //int index = pizza.IndexOf('[');
+
+        //string ingredients = pizza.Substring(index + 1);
+        //string[] ingredientsArray = ingredients.Split(',');
     }
 }

@@ -8,6 +8,45 @@ namespace PizzaDremma
     {
         private static List<Pizza> Cart = new List<Pizza>();
 
+        public double PizzaBTW()
+        {
+            double total = 0;
+            int i = 0;
+            foreach (var item in Cart)
+            {
+
+                total += Cart[i].Price;
+                i++;
+            }
+            total = total  /  100 *  21;
+            return total;
+        }
+        public double PizzaNoBTW()
+        {
+            double total = 0;
+            int i = 0;
+            foreach (var item in Cart)
+            {
+
+                total += Cart[i].Price;
+                i++;
+            }
+            total = total / 100 * 79;
+            return total;
+        }
+        public double PizzaTotal ()
+        {
+            double total = 0;
+            int i = 0;
+            foreach (var item in Cart)
+            {
+                
+                total += Cart[i].Price;
+                i++;
+            }
+            return total;
+        }
+        
         public void PizzaEnd(Pizza pizza)
         {
             Console.Clear();
@@ -173,31 +212,33 @@ namespace PizzaDremma
         public void ReviewOrder2()
         {
             Console.Clear();
-            Console.WriteLine("Your order: ");
+            Console.WriteLine($"Your order:");
+            
             foreach (var item in Cart)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"--------------------------------------------");
                 Console.ResetColor();
-                Console.WriteLine($"\b{item.ID}: Pizza {item.Name}: {item.Price} euro\nCrust: {item.Crust} Size: {item.Size}\nCheese: {item.Cheesies[0]}, {item.Cheesies[1]}, {item.Cheesies[2]}, {item.Cheesies[3]}\nMeat: {item.Meaties[0]}, {item.Meaties[1]}, {item.Meaties[2]}, {item.Meaties[3]}\nVeggies: {item.Veggies[0]}, {item.Veggies[1]}, {item.Veggies[2]}, {item.Veggies[3]}");
+                Console.WriteLine($"\b{item.ID}: Pizza {item.Name}: €{item.Price} \nCrust: {item.Crust} Size: {item.Size}\nCheese: {item.Cheesies[0]}, {item.Cheesies[1]}, {item.Cheesies[2]}, {item.Cheesies[3]}\nMeat: {item.Meaties[0]}, {item.Meaties[1]}, {item.Meaties[2]}, {item.Meaties[3]}\nVeggies: {item.Veggies[0]}, {item.Veggies[1]}, {item.Veggies[2]}, {item.Veggies[3]}");
             }
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"--------------------------------------------");
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Press 'D' to delete an item, any other key to return to the previous page:");
+            Console.WriteLine($"Total order value: €{Math.Round(PizzaTotal(), 2)} including 21% BTW.");
+            Console.WriteLine("\nPress 'D' to delete an item, any other key to return to the previous page:");
 
             if (Console.ReadKey().Key == ConsoleKey.D)
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("Your order: ");
+                Console.WriteLine($"Your order: ");
                 foreach (var item in Cart)
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"--------------------------------------------");
                     Console.ResetColor();
-                    Console.WriteLine($"\b{item.ID}: Pizza {item.Name}: {item.Price} euro\nCrust: {item.Crust} Size: {item.Size}\nCheese: {item.Cheesies[0]}, {item.Cheesies[1]}, {item.Cheesies[2]}, {item.Cheesies[3]}\nMeat: {item.Meaties[0]}, {item.Meaties[1]}, {item.Meaties[2]}, {item.Meaties[3]}\nVeggies: {item.Veggies[0]}, {item.Veggies[1]}, {item.Veggies[2]}, {item.Veggies[3]}");
+                    Console.WriteLine($"\b{item.ID}: Pizza {item.Name}: €{item.Price} \nCrust: {item.Crust} Size: {item.Size}\nCheese: {item.Cheesies[0]}, {item.Cheesies[1]}, {item.Cheesies[2]}, {item.Cheesies[3]}\nMeat: {item.Meaties[0]}, {item.Meaties[1]}, {item.Meaties[2]}, {item.Meaties[3]}\nVeggies: {item.Veggies[0]}, {item.Veggies[1]}, {item.Veggies[2]}, {item.Veggies[3]}");
                 }
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"--------------------------------------------");
@@ -211,12 +252,13 @@ namespace PizzaDremma
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"--------------------------------------------");
                     Console.ResetColor();
-                    Console.WriteLine($"\b{item.ID}: Pizza {item.Name}: {item.Price} euro\nCrust: {item.Crust} Size: {item.Size}\nCheese: {item.Cheesies[0]}, {item.Cheesies[1]}, {item.Cheesies[2]}, {item.Cheesies[3]}\nMeat: {item.Meaties[0]}, {item.Meaties[1]}, {item.Meaties[2]}, {item.Meaties[3]}\nVeggies: {item.Veggies[0]}, {item.Veggies[1]}, {item.Veggies[2]}, {item.Veggies[3]}");
+                    Console.WriteLine($"\b{item.ID}: Pizza {item.Name}: €{item.Price} \nCrust: {item.Crust} Size: {item.Size}\nCheese: {item.Cheesies[0]}, {item.Cheesies[1]}, {item.Cheesies[2]}, {item.Cheesies[3]}\nMeat: {item.Meaties[0]}, {item.Meaties[1]}, {item.Meaties[2]}, {item.Meaties[3]}\nVeggies: {item.Veggies[0]}, {item.Veggies[1]}, {item.Veggies[2]}, {item.Veggies[3]}");
                 }
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"--------------------------------------------");
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("Press any key to return to the main menu.");
+                Console.WriteLine($"Total order value: €{Math.Round(PizzaTotal(), 2)} including 21% BTW.");
+                Console.WriteLine("\nPress any key to return to the main menu.");
                 Console.ReadLine();
             }
         }
