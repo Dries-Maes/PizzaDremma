@@ -14,7 +14,7 @@ namespace PizzaDremma
         
 
         private static List<Ingredient> Stock = new List<Ingredient>();
-        Ingredient ingredient = new Ingredient(Name, Quantity);
+        Ingredient currentstock = new Ingredient();
         private void CreateUsedStock()
         {
              //Ingredient usedstock =  new Ingredient();
@@ -24,7 +24,7 @@ namespace PizzaDremma
              
             
             // print alle stock.txt items met aantallen
-            LogWriter.StockLog($"{Convert.ToString(ingredient.name)}, {Convert.ToString(ingredient.quantity)}");
+            //LogWriter.StockLog($"{Convert.ToString(currentstock[<.name)}, {Convert.ToString(ingredient.quantity)}");
             Console.ReadLine();
         }
 

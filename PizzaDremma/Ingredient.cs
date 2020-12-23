@@ -1,45 +1,83 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace PizzaDremma
 {
+
     class Ingredient
     {
-        public string name { get; set; }
-        public int quantity { get; set; }
-        //  mozarella,Gorgonzola
-        //  5, 7
-
-
-        //      lijn1 van stock.txt -> array (string[] name)
-        //      lijn2 van stock.txt -> array (double[] quantity)
-        //       Ingredient currentStock = new Ingredient(name[], quantity[]);
-        //      Ingredient usedstock = new Ingredient();
-        //     currentstock.name > lijn1 van stock.txt
-        //     currentstock.quantity - usedstock.quantity > lijn2 van stock.txt
-
-        public static string[] nametest = {"Mozarella","Gorgonzola","Emmentaler","Parmezaan","Ricotta","Feta","VeganCheese","Artichokes","BlackOlives","CherryTomatoes","Garlic","Basil","GreenBellPeppers","Jalapeños","Mushrooms","Oregano","Pineapple","RedOnions","RedPeppers","Spinach","Aubergines","Sun_driedTomatoes","GreenOlives","FriedOnions","GrilledChicken","ItalianMeatballs","SpicyPepperoni","Salami","SmokedHam","CrispyBacon","Lardons","SmokedSalmon","Tuna"};
+        public Dictionary<string, int>  Inventory { get; set; }
+        public int[] QuantityProp { get; set; }
         
-        string namelist =  "test";
-        int[] quantitytest = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0 };
-        string test = nametest[0];
-        string[] cars = { "Volvo", "BMW", "Ford", "Mazda" };
+        readonly string[] NameArray = new string[] { "Mozarella", "Gorgonzola", "Emmentaler", "Parmezaan", "Ricotta", "Feta", "VeganCheese", "Artichokes", "BlackOlives", "CherryTomatoes", "Garlic", "Basil", "GreenBellPeppers", "Jalapeños", "Mushrooms", "Oregano", "Pineapple", "RedOnions", "RedPeppers", "Spinach", "Aubergines", "Sun_driedTomatoes", "GreenOlives", "FriedOnions", "GrilledChicken", "ItalianMeatballs", "SpicyPepperoni", "Salami", "SmokedHam", "CrispyBacon", "Lardons", "SmokedSalmon", "Tuna" };
 
-        public Ingredient(string name = "default", int quantity = 0)//constructor
+
+        Dictionary<string, int> Prop  = new Dictionary<string, int>();
+        
+        public Ingredient(Dictionary<string, int> lijst = null)
         {
-             string[] nametest = new string[]{"Mozarella","Gorgonzola","Emmentaler","Parmezaan","Ricotta","Feta","VeganCheese","Artichokes","BlackOlives","CherryTomatoes","Garlic","Basil","GreenBellPeppers","Jalapeños","Mushrooms","Oregano","Pineapple","RedOnions","RedPeppers","Spinach","Aubergines","Sun_driedTomatoes","GreenOlives","FriedOnions","GrilledChicken","ItalianMeatballs","SpicyPepperoni","Salami","SmokedHam","CrispyBacon","Lardons","SmokedSalmon","Tuna"};
-            int[] quantitytest = new int[]{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0 };
-            //name = Convert.ToString(nametest[12]);
-            //Console.WriteLine(name);
-            //Console.ReadLine();
+            if (lijst == null)
+            {
+                Dictionary<string, int> Prop2 = new Dictionary<string, int>(); 
+                Inventory = Prop2;
+                foreach (var item in NameArray)
+                {
+                    Prop2.Add(item, 0);
+                }
+                
+            }
+            else { 
+
+                Inventory = lijst;
+            }
         }
 
-        public void PrintIngredient()
+       
+
+        public static void PrintInventory(Dictionary<string, int> list)
         {
-            name = Convert.ToString(nametest[12]);
-            Console.WriteLine(name);
-            Console.ReadLine();
+            Console.WriteLine("Inventory list:");
+            foreach (KeyValuePair<string, Int32> ingredient in list)
+            {
+                Console.WriteLine("Key: {0}, Value: {1}",
+                    ingredient.Key, ingredient.Value);
+            }
+        }
+        public static void WriteToFile(Dictionary<string, int> dictionary, string file)
+        {
+            using (FileStream fs = File.OpenWrite(file))
+            using (BinaryWriter writer = new BinaryWriter(fs))
+            {
+                // Put count.
+                writer.Write(dictionary.Count);
+                // Write pairs.
+                foreach (var pair in dictionary)
+                {
+                    writer.Write(pair.Key);
+                    writer.Write(pair.Value);
+                }
+            }
+        }
+        public static Dictionary<string, int> ReadFromFile(string file)
+        {
+            var result = new Dictionary<string, int>();
+            using (FileStream fs = File.OpenRead(file))
+            using (BinaryReader reader = new BinaryReader(fs))
+            {
+                // Get count.
+                int count = reader.ReadInt32();
+                // Read in all pairs.
+                for (int i = 0; i < count; i++)
+                {
+                    string key = reader.ReadString();
+                    int value = reader.ReadInt32();
+                    result[key] = value;
+                }
+                return result;
+            }
         }
     }
 }

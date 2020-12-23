@@ -19,7 +19,7 @@ namespace PizzaDremma
         public object[] Veggies { get; set; }
         public bool Vegetarian { get; set; }
 
-        private static int UID = 1;
+        private int PID = 1;
         public int ID { get; set; }
       
 
@@ -33,7 +33,10 @@ namespace PizzaDremma
             Vegetarian = veggie;
             Size = SizeOptions.small;
             Crust = CrustOptions.classic;
-            ID = UID++ ;
+            ID = PID++ ;
         }
+        
+
+
     }
 }

@@ -21,10 +21,13 @@ namespace PizzaDremma
     {
         static void Main(string[] args)
         {
-            string name = "Mozzarella";
-            int quantity = 5;
+            Ingredient addedStock = new Ingredient();
+
+            Ingredient.PrintInventory(Ingredient.ReadFromFile( $"C:/Users/{Environment.UserName}/source/repos/PizzaDremma/PizzaDremma/dictionary2.bin")
+            );
+
             Methods methode = new Methods();
-            Ingredient ingredient = new Ingredient(name, quantity);
+           // Ingredient ingredient = new Ingredient(name, quantity);
             
             Console.OutputEncoding = Encoding.UTF8;
               /* methode.PrintBanner();
@@ -39,7 +42,7 @@ namespace PizzaDremma
                 
         methode.PrintBanner();
             Console.ReadLine();
-            ingredient.PrintIngredient();
+            //ingredient.PrintIngredient();
             
             bool showMenu = true;
             while (showMenu)
