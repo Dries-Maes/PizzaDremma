@@ -90,7 +90,6 @@ namespace PizzaDremma
                 Console.WriteLine($"\b{item.ID}: {item.Name} - {item.Price}\nCrust:{item.Crust} Size:{item.Size}\nCheese:{item.Cheesies[0]}, {item.Cheesies[1]}, {item.Cheesies[2]}, {item.Cheesies[3]}\nMeat: {item.Meaties[0]}, {item.Meaties[1]}, {item.Meaties[2]}, {item.Meaties[3]}\nVeggies: {item.Veggies[0]}, {item.Veggies[1]}, {item.Veggies[2]}, {item.Veggies[3]}");
                 Console.ReadLine();
             }
-            //lukt het? :-) run maar hoor ik laat het weten nog lleeg nu komt hij er niet in, misschien readline nodig
 
 
             Console.WriteLine("Select the item number that you want to remove:");
@@ -142,7 +141,7 @@ namespace PizzaDremma
                     pizzaMaker.PizzaCustomMade();
                     return true;
                 case '3':
-                    keuze.ReviewOrder2();//weg? ja, maar VS heeft moeite met bijbenen
+                    keuze.ReviewOrder2();
                     return true;
                 case '4':
                     PlayTetris();
