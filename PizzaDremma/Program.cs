@@ -2,12 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Runtime.InteropServices;
-using System.Drawing;
-using System.Threading;
-using PizzaDremma.enums;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
+
 public static class EnumUtil
 {
     public static IEnumerable<T> GetValues<T>()
@@ -15,44 +10,26 @@ public static class EnumUtil
         return Enum.GetValues(typeof(T)).Cast<T>();
     }
 }
+
 namespace PizzaDremma
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Ingredient addedStock = new Ingredient();
-
-            Ingredient.PrintInventory(Ingredient.ReadFromFile( $"C:/Users/{Environment.UserName}/source/repos/PizzaDremma/PizzaDremma/dictionary2.bin")
-            );
-
+            
             Methods methode = new Methods();
-           // Ingredient ingredient = new Ingredient(name, quantity);
-            
+
             Console.OutputEncoding = Encoding.UTF8;
-              /* methode.PrintBanner();
-               Console.ReadLine();
-             methode.PlayTetris();
-               methode.Payment();
-            LogWriter.WriteLog(Console.ReadLine());
+
+            methode.PrintBanner();
             Console.ReadLine();
-              */
-           // Pizza veggie = new Pizza("regular","cheezy");
-               
-                
-        methode.PrintBanner();
-            Console.ReadLine();
-            //ingredient.PrintIngredient();
-            
+
             bool showMenu = true;
             while (showMenu)
             {
                 showMenu = methode.PizzariaMenu();
             }
-
-            
-            
-            
         }
     }
 }

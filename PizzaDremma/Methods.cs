@@ -20,7 +20,12 @@ namespace PizzaDremma
             Console.WriteLine(" ►  Dit item is geselecteerd.\n    Dit item niet. ");
         
     }
-        
+
+        public static string FilePath(string addition = "")
+        { string path = $"C:/Users/{Environment.UserName}/source/repos/PizzaDremma/PizzaDremma/";
+            path += addition;
+            return path;
+        }
         public void CreatePizza()
         {
             throw new NotImplementedException();
@@ -156,7 +161,8 @@ namespace PizzaDremma
             Console.WriteLine("2) Make your own pizza");//build a pizza from scratch
             Console.WriteLine("3) Review your order");//what did I order
             Console.WriteLine("4) Pay your order");//pay if I can
-            Console.WriteLine("5) Exit");
+            Console.WriteLine("5) Show Inventory");
+            Console.WriteLine("6) Exit");
             Console.Write("\r\nSelect an option: ");
 
             switch (Convert.ToChar(Console.ReadLine()))
@@ -178,6 +184,13 @@ namespace PizzaDremma
                     Payment();
                     return true;
                 case '5':
+                    Console.Clear();
+                    
+                    Print.PrintInventory(Ingredient.ReadFromFile(FilePath("dictionary.bin")));
+                    Console.ReadLine();
+                    Console.ResetColor();
+                    return true;
+                case '6':
 
                     return false;
                 default:

@@ -36,16 +36,7 @@ namespace PizzaDremma
         }
 
        
-
-        public static void PrintInventory(Dictionary<string, int> list)
-        {
-            Console.WriteLine("Inventory list:");
-            foreach (KeyValuePair<string, Int32> ingredient in list)
-            {
-                Console.WriteLine("Key: {0}, Value: {1}",
-                    ingredient.Key, ingredient.Value);
-            }
-        }
+        
         public static void WriteToFile(Dictionary<string, int> dictionary, string file)
         {
             using (FileStream fs = File.OpenWrite(file))
