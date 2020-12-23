@@ -102,8 +102,11 @@ namespace PizzaDremma
         public void Payment()
         {
             
-            Console.WriteLine($"The total for you order is {total}euro.\nHow would you like to pay? By card or cash?\nEnter the amount you're paying with.");
+            Console.WriteLine($"The total for you order is {total}euro.\nHow would you like to pay? By card or cash?");
+            string paymentChoice = Console.ReadLine();
+            Console.WriteLine("Enter the amount you're paying with.");
             budget = Convert.ToDouble(Console.ReadLine());
+
 
             if(budget >= total)
             {
