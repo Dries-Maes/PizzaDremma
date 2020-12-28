@@ -30,40 +30,11 @@ namespace PizzaDremma
         {
             throw new NotImplementedException();
         }
-        public void PizzaPrint()
-        {
-            Console.OutputEncoding = Encoding.UTF8;
-            string pizzaArt = @"
-                    ████████                    
-                  ██░░░░░░░░██                  
-                ██░░░░░░░░██▒▒██                
-              ██░░░░░░░░██░░▒▒░░██              
-              ██░░░░░░██▒▒▒▒░░▒▒██              
-            ██░░░░░░░░██▒▒▒▒▒▒▒▒▒▒██            
-            ██░░░░░░░░██▒▒░░▒▒▒▒▒▒██            
-          ██░░░░░░░░░░░░██▒▒▒▒░░██░░██          
-          ██░░░░░░░░░░░░░░██████░░░░██          
-        ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░██        
-        ██░░░░░░  ██░░░░░░  ██░░░░░░░░██        
-      ██░░██░░░░████░░░░░░████░░░░░░░░░░██      
-      ██▒▒▒▒██░░░░░░░░░░░░░░░░░░░░░░░░░░██      
-    ██▒▒▒▒░░██░░░░░░████░░░░░░██████░░░░░░██    
-  ████░░▒▒▒▒██░░░░░░░░░░░░░░██░░▒▒▒▒██░░░░████  
-██▒▒░░██▒▒██░░░░░░░░░░░░░░░░██▒▒░░▒▒░░████░░▒▒██
-██▒▒░░░░████░░░░░░░░░░░░░░░░██▒▒░░▒▒████░░░░▒▒██
-██▒▒░░░░░░░░██████████████████████████░░░░░░▒▒██
-██▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒██
-  ██▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒██  
-    ████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒████    
-        ████████████████████████████████  ";
-            //ConsoleHelper.SetCurrentFont(pizzaArt, 2);
-            Console.WriteLine(pizzaArt);
-        
-        }
+
         public void PrintBanner()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            string banner = @"
+            Console.WriteLine(@"
  ██▓███   ██▓▒███████▒▒███████▒ ▄▄▄         ▓█████▄  ██▀███  ▓█████  ███▄ ▄███▓ ███▄ ▄███▓ ▄▄▄      
 ▓██░  ██▒▓██▒▒ ▒ ▒ ▄▀░▒ ▒ ▒ ▄▀░▒████▄       ▒██▀ ██▌▓██ ▒ ██▒▓█   ▀ ▓██▒▀█▀ ██▒▓██▒▀█▀ ██▒▒████▄    
 ▓██░ ██▓▒▒██▒░ ▒ ▄▀▒░ ░ ▒ ▄▀▒░ ▒██  ▀█▄     ░██   █▌▓██ ░▄█ ▒▒███   ▓██    ▓██░▓██    ▓██░▒██  ▀█▄  
@@ -73,18 +44,24 @@ namespace PizzaDremma
 ░▒ ░      ▒ ░░░▒ ▒ ░ ▒░░▒ ▒ ░ ▒  ▒   ▒▒ ░    ░ ▒  ▒   ░▒ ░ ▒░ ░ ░  ░░  ░      ░░  ░      ░  ▒   ▒▒ ░
 ░░        ▒ ░░ ░ ░ ░ ░░ ░ ░ ░ ░  ░   ▒       ░ ░  ░   ░░   ░    ░   ░      ░   ░      ░     ░   ▒   
           ░    ░ ░      ░ ░          ░  ░      ░       ░        ░  ░       ░          ░         ░  ░
- ____                   
-/    \			
-  u  u|      _______    
-    \ |  .-''#%&#&%#``-.   
-   = /  ((%&#&#&%&VK&%&))  
-    |    `-._#%&##&%_.-'   
- /\/\`--.   `-.'''.-'
- |  |    \   /`./          
- |\/|  \  `-'  /
- || |   \     /         
-            ";
-            Console.WriteLine(banner);
+"); 
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(@"
+ ____                                                                                          ____   
+/    \			                                                                      /    \	
+  u  u|      _______                                                           _______       |u  u 
+    \ |  .-''#%&#&%#``-.                                                   .-``#%&#&%#''-.   | /  
+   = /  ((%&#&#&%&VK&%&))                                                ((%&#&#&%&VK&%&))    \ =   
+    |    `-._#%&##&%_.-'                                                   '-._%&##&%#_.-`     |  
+ /\/\`--.   `-.'''.-'                                                         '-.'''.-`    .--`/\/\ 
+ |  |    \   /`./                                                                 \.`\   /     |  | 
+ |\/|  \  `-'  /                                                                   \  '-`  /   |/\| 
+ || |   \     /                                                                     \     /    | || 
+            
+
+");
+           
         }
         
        /* public void ReviewOrder()
@@ -161,7 +138,7 @@ namespace PizzaDremma
             Console.WriteLine("2) Make your own pizza");//build a pizza from scratch
             Console.WriteLine("3) Review your order");//what did I order
             Console.WriteLine("4) Pay your order");//pay if I can
-            Console.WriteLine("5) Show Inventory");
+            Console.WriteLine("5) Show/update Inventory");
             Console.WriteLine("6) Exit");
             Console.Write("\r\nSelect an option: ");
 
@@ -184,15 +161,12 @@ namespace PizzaDremma
                     Payment();
                     return true;
                 case '5':
-                    Console.Clear();
-                    
-                    Print.PrintInventory(Ingredient.ReadFromFile(FilePath("dictionary.bin")));
-                    Console.ReadLine();
-                    Console.ResetColor();
+                    Ingredient.AddToInventory();
                     return true;
                 case '6':
-
+                    
                     return false;
+               
                 default:
                     return true;
             }
