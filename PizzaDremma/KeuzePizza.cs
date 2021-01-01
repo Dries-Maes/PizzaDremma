@@ -52,7 +52,7 @@ namespace PizzaDremma
             Console.Clear();
             Console.WriteLine($"You selected a {pizza.Size} {pizza.Name} pizza with a {pizza.Crust} crust.");
             Cart.Add(pizza);
-            LogWriter.WriteLog($"{DateTime.Today:G}: {Convert.ToString(pizza.ID)}, {Convert.ToString(pizza.Name)}, {Convert.ToString(pizza.Price)}, {Convert.ToString(pizza.Vegetarian)}");
+            LogWriter.WriteLog($"{DateTime.Now:g}: {Convert.ToString(pizza.ID)}, {Convert.ToString(pizza.Name)}, {Convert.ToString(pizza.Price)}, {Convert.ToString(pizza.Vegetarian)}");
             Console.ReadLine();
         }
 
